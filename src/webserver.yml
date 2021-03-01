@@ -1,0 +1,8 @@
+---
+- name: Configure nginx web server and deploy the artifact
+  hosts: webservers
+  become: true
+  become_method: sudo
+  roles:
+    - nginx
+    - spa

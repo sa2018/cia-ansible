@@ -1,0 +1,2 @@
+[webservers]
+ec2-54-179-158-147.ap-southeast-1.compute.amazonaws.com ansible_connection=ssh ansible_ssh_user=ec2-user

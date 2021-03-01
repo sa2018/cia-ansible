@@ -1,0 +1,5 @@
+---
+- name: Install nginx
+  command: amazon-linux-extras install nginx1.12=latest -y
+  args:
+    creates: /usr/sbin/nginx
