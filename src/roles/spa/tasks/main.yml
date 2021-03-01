@@ -1,0 +1,19 @@
+- name: Create releases directory.
+  file:
+    path: /opt/app/releases/
+    state: directory
+    owner: nginx
+    group: nginx
+
+- name: Unarchive artifact to a folder.
+  ansible.builtin.unarchive:
+    src: ../../../artifacts/spa-{{artifact_id}}.tgz
+    dest: /opt/app/releases/spa-{{artifact_id}}
+
+- name: Change current release to unarchived release.
+  file:
+    src: /opt/app/releases/spa-{{artifact_id}}
+    dest: /opt/app/current
+    owner: nginx
+    group: nginx
+    state: link

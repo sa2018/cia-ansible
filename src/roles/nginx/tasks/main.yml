@@ -1,0 +1,18 @@
+---
+- name: OS distribution dependent tasks
+  include_tasks: "{{ ansible_facts['distribution'] | lower }}.yml"
+
+- name: Default configuration for nginx
+  template:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    group: root
+    mode: 0664
+  notify: restart nginx
+
+- name: Enable nginx service at startup
+  service:
+    name: nginx
+    state: started
+    enabled: true
